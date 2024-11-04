@@ -115,8 +115,3 @@ app.get('/increment', (req, res) => {
     console.log(currentNumber);
     res.json(currentNumber);
 });
-
-// Start the server
-app.listen(port, '0.0.0.0', () => {
-    console.log(`Server running on port ${port}`);
-});
