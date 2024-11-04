@@ -16,7 +16,7 @@ app.use(express.json())
 const secretKey = process.env.SECRET_KEY || 'WJDLI120395DHJ'
 
 //Middleware to protect routes
-const authenticateJWT = expressJwt({ secret: secretKey, algorithms: ['HS256']} );
+const authenticateJWT = expressjwt({ secret: secretKey, algorithms: ['HS256']} );
 
 // A variable to store our number
 let currentNumber = 100;
