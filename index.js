@@ -33,6 +33,8 @@ app.post('/login', (req, res) => {
 
     const {gamecode, password} = req.body;
 
+    console.log("Login request recieved, given as " + gamecode + " " + password)
+
     // NOTE THAT THE LONGEST A USER CAN REMAIN CONNECTED IS DEPENDING ON THIS VALUE
     // TODO: Let admins decide the gamecode and passcode. Implement admin login.
     if (gamecode == 'test' && password == 'test') {
