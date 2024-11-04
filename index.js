@@ -4,10 +4,10 @@ const cors = require('cors');
 const http = require('http');
 const WebSocket = require('ws')
 const jwt = require('jsonwebtoken')
-const expressJwt = require('express-jwt')
+const { expressjwt: expressJwt }  = require('express-jwt')
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json())
@@ -16,7 +16,10 @@ app.use(express.json())
 const secretKey = process.env.SECRET_KEY || 'WJDLI120395DHJ'
 
 //Middleware to protect routes
-const authenticateJWT = expressjwt({ secret: secretKey, algorithms: ['HS256']} );
+const authenticateJWT = expressJwt({
+    secret: secretKey,
+    algorithms: ["HS256"]
+});
 
 // A variable to store our number
 let currentNumber = 100;
