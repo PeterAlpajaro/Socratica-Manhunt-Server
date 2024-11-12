@@ -56,8 +56,10 @@ app.get('/protected', authenticateJWT, (req, res) => {
 });
 
 // Updated for websocket
-wss.on('connection', (ws) => {
+wss.on('connection', (ws, req) => {
     const token = req.headers['sec-websocket-protocol'];
+
+
 
     jwt.verify(token, secretKey, (err, decoded) => {
         if (err) {
@@ -107,13 +109,13 @@ server.listen(port,'0.0.0.0', () => {
 
 
 
-// Route to get the current number
-app.get('/', (req, res) => {
-    res.json(currentNumber);
-});
+// // Route to get the current number
+// app.get('/', (req, res) => {
+//     res.json(currentNumber);
+// });
 
-app.get('/increment', (req, res) => {
-    currentNumber++;
-    console.log(currentNumber);
-    res.json(currentNumber);
-});
+// app.get('/increment', (req, res) => {
+//     currentNumber++;
+//     console.log(currentNumber);
+//     res.json(currentNumber);
+// });
