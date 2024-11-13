@@ -57,8 +57,14 @@ app.get('/protected', authenticateJWT, (req, res) => {
 
 // Updated for websocket
 wss.on('connection', (ws, req) => {
-    const token = req.headers['sec-websocket-protocol'];
+    const token = new URLSearchParams(req.url.slice(1)).get('token');
 
+    if (!token) {
+        ws.close();
+        console.log('No token provided, closing connection');
+        return;
+
+    }
 
 
     jwt.verify(token, secretKey, (err, decoded) => {
